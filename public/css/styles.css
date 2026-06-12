@@ -1,0 +1,1170 @@
+/* ==========================================================================
+   SISTEMA DE DISEÑO - SOUNDWAVE STORE
+   ========================================================================== */
+
+:root {
+    /* Fondos y Superficies */
+    --color-uno: #1A1A1A;
+    /* Fondo Body */
+    --color-cuatro: #1C1C24;
+    /* Superficie (Cards/Nav) */
+    --color-bg-input: #121212;
+
+    /* Acentos */
+    --color-dos: #d4a017;
+    /* Dorado Principal */
+    --color-cinco: #E8C547;
+    /* Dorado Brillante (Hover) */
+    --color-seis: #C0392B;
+    /* Rojo Alerta */
+
+    /* Tipografía y Estados */
+    --color-texto: #FFFFFF;
+    --color-texto-muted: #A0A0A0;
+    --color-tres: #F5F5F0;
+    /* Blanco roto / Detalle */
+
+    /* UI Elements */
+    --border-ui: rgba(245, 245, 240, 0.1);
+    --shadow-ui: rgba(0, 0, 0, 0.3);
+    --card-img-bg: #FFFFFF;
+
+    /* SweetAlert */
+    --swal-bg: #212529;
+    --swal-text: #f8f9fa;
+}
+
+/* TEMA CLARO */
+.light {
+    --color-uno: #F5F5F0;
+    --color-cuatro: #FFFFFF;
+    --color-bg-input: rgba(255, 255, 255, 0.9);
+
+    --color-texto: #1A1A1A;
+    --color-texto-muted: #555555;
+    --color-tres: #1C1C24;
+
+    --border-ui: rgba(0, 0, 0, 0.1);
+    --shadow-ui: rgba(0, 0, 0, 0.1);
+    --card-img-bg: #F9F9F9;
+
+    /* SweetAlert */
+    --swal-bg: #ffffff;
+    --swal-text: #212529;
+}
+
+/* Para Chrome, Safari, Edge y Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Para Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+/* ==========================================================================
+   ESTILOS BASE
+   ========================================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--color-uno);
+    color: var(--color-texto);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* body.fondo es redundante con body, pero se mantiene por si hay páginas que lo usan */
+body.fondo {
+    background-color: var(--color-uno);
+    color: var(--color-texto);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.fondo {
+    background: var(--color-uno);
+}
+
+.hidden {
+    display: none;
+}
+
+.texto-rojo {
+    color: var(--color-seis) !important;
+}
+/* ==========================================================================
+   COMPONENTES GLOBALES (Botones, Inputs, Nav)
+   ========================================================================== */
+
+.dropdown-menu,
+.titulos,
+footer {
+    color: var(--color-texto);
+    background-color: var(--color-cuatro);
+}
+
+/* Inputs */
+.form-control,
+.form-select {
+    background-color: var(--color-bg-input) !important;
+    color: var(--color-texto) !important;
+    border: 1px solid var(--border-ui) !important;
+}
+
+.form-control:focus,
+.form-select:focus {
+    background-color: var(--color-bg-input) !important;
+    border-color: var(--color-dos) !important;
+    box-shadow: 0 0 0 0.25rem rgba(212, 160, 23, 0.15);
+}
+
+.form-control::placeholder {
+    color: var(--color-texto-muted);
+    opacity: 0.6;
+}
+
+/* Botón Brand (Dorado) */
+.btn-brand,
+.btn-agregar,
+.special-btn,
+.btn-confirm-order,
+.btn-add-cart {
+    display: inline-block;
+    width: 100%;
+    background-color: var(--color-dos);
+    color: var(--color-uno);
+    font-weight: 700;
+    border: none;
+    border-radius: 6px;
+    padding: 0.8rem;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-brand:hover,
+.btn-agregar:hover,
+.special-btn:hover,
+.btn-confirm-order:hover,
+.btn-add-cart:hover {
+    background-color: var(--color-cinco);
+    color: var(--color-uno);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow-ui);
+}
+
+@media (min-width: 768px) {
+    .special-btn {
+        width: auto;
+        min-width: 200px;
+    }
+}
+
+/* Botón Volver Auth */
+.btn-volver-auth {
+    display: inline-block;
+    background-color: transparent;
+    color: var(--color-seis);
+    border: 1px solid var(--color-seis);
+    border-radius: 6px;
+    padding: 0.6rem 1.2rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-volver-auth:hover {
+    background-color: var(--color-seis);
+    color: white;
+}
+
+/* Botón Outline Adaptativo */
+.btn-outline-adaptativo {
+    color: var(--color-texto);
+    border: 2px solid var(--color-dos);
+    background: transparent;
+    border-radius: 6px;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-adaptativo:hover {
+    background-color: var(--color-dos);
+    color: var(--color-uno);
+}
+
+/* Botón Regresar */
+.btn-regresar {
+    color: var(--color-texto-muted);
+    background: transparent;
+    border: 1px solid var(--border-ui);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-regresar:hover {
+    border-color: var(--color-dos);
+    color: var(--color-dos);
+}
+
+/* Theme Toggle */
+#theme-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+/* ==========================================================================
+   ICONOS SVG ADAPTATIVOS
+   ========================================================================== */
+
+/* Por defecto (modo oscuro): blancos */
+.icon-adaptive {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1);
+    transition: filter 0.3s ease;
+}
+
+/* Modo claro: negros */
+.light .icon-adaptive {
+    filter: brightness(0);
+}
+
+/* Excepción: siempre oscuro sobre fondo dorado */
+.btn-brand .icon-adaptive,
+.btn-agregar .icon-adaptive {
+    filter: brightness(0);
+}
+
+/* ==========================================================================
+   NAVBAR
+   ========================================================================== */
+/* item-catalogo compartiendo propiedades con nav-link-custom, para mejor diseño */
+/*.item-catalogo {
+    color: var(--color-texto);
+    background-color: var(--color-uno);
+}
+
+.item-catalogo-active {
+    color: var(--color-dos);
+}
+*/
+.nav-custom {
+    background-color: var(--color-uno);
+    transition: background-color 0.3s ease;
+}
+
+.nav-link-custom,
+.item-catalogo {
+    color: var(--color-texto) !important;
+    opacity: 0.8;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.nav-link-custom:hover,
+.nav-link-custom.active,
+.item-catalogo:hover,
+.item-catalogo-active {
+    opacity: 1;
+    color: var(--color-dos) !important;
+}
+
+.nav-link-custom.active::after,
+.item-catalogo.active::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-dos);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+/* Menú hamburguesa */
+.navbar-toggler {
+    border-color: var(--border-ui);
+}
+
+.navbar-toggler-icon {
+    filter: invert(1);
+}
+
+.light .navbar-toggler-icon {
+    filter: invert(0);
+}
+
+/* ==========================================================================
+   FOOTER — ACCORDION MOBILE
+   ========================================================================== */
+
+.footer-accordion-item {
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid var(--border-ui) !important;
+}
+
+.footer-accordion-item:last-child {
+    border-bottom: none !important;
+}
+
+.footer-accordion-btn {
+    background: transparent !important;
+    color: var(--color-texto) !important;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 1rem 0;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+}
+
+/* Cuando está abierto, Bootstrap le pone fondo blanco — lo anulamos */
+.footer-accordion-btn:not(.collapsed) {
+    background: transparent !important;
+    color: var(--color-dos) !important;
+    box-shadow: none !important;
+}
+
+/* Chevron adaptativo al tema */
+.footer-accordion-btn::after {
+    filter: invert(1);
+    opacity: 0.5;
+}
+
+.light .footer-accordion-btn::after {
+    filter: invert(0);
+    opacity: 0.5;
+}
+
+/* Cuando está abierto, el chevron toma color dorado */
+.footer-accordion-btn:not(.collapsed)::after {
+    filter: invert(1) sepia(1) saturate(3) hue-rotate(5deg);
+    opacity: 1;
+}
+
+.footer-accordion-body {
+    background: transparent !important;
+    padding: 0.25rem 0 1rem 0;
+}
+
+/* ==========================================================================
+   TARJETAS DE PRODUCTO
+   ========================================================================== */
+
+.product-card {
+    width: 100%;
+    background-color: var(--color-cuatro);
+    border: 1px solid var(--border-ui);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 10px var(--shadow-ui);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px var(--shadow-ui);
+}
+
+.card-img-top {
+    width: 100%;
+    height: 250px;
+    object-fit: contain;
+    background-color: var(--card-img-bg);
+    padding: 15px;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 1.2rem 1rem;
+}
+
+.card-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-texto);
+    margin-bottom: 0.4rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 2.4em;
+}
+
+.card-subtitle {
+    font-size: 0.85rem;
+    color: var(--color-texto-muted);
+    margin-bottom: 1rem;
+}
+
+/* Precios */
+.price-container {
+    min-height: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.precio,
+.precio-descuento {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 !important;
+    line-height: 1.2;
+}
+
+.precio {
+    color: var(--color-dos);
+}
+
+.precio-descuento {
+    color: var(--color-seis);
+}
+
+.precio-original {
+    color: var(--color-texto-muted);
+    text-decoration: line-through;
+    font-size: 0.95rem;
+    opacity: 0.7;
+    min-height: 1.2em;
+}
+
+.envio {
+    color: #28a745;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.descuento-tag {
+    font-size: 0.85rem;
+    color: #28a745;
+    font-weight: 700;
+}
+
+.light .descuento-tag {
+    color: #1e7e34;
+}
+
+.cuotas {
+    color: var(--color-seis);
+    font-size: 0.9rem;
+}
+
+.cuotas span {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+}
+
+/* Badge de descuento */
+.badge-producto {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: var(--color-seis);
+    color: #FFFFFF;
+    font-size: 0.75rem;
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-weight: 800;
+    text-transform: uppercase;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+}
+
+/* ==========================================================================
+   CATÁLOGO
+   ========================================================================== */
+
+.catalog-title {
+    background-color: var(--color-cuatro);
+    color: var(--color-texto);
+    border: 1px solid var(--border-ui);
+    border-radius: 8px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 800;
+}
+
+.light .catalog-title {
+    background-color: #FFFFFF;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.empty-catalog-alert {
+    background-color: var(--color-cuatro);
+    border: 1px solid var(--border-ui);
+    border-radius: 12px;
+    color: var(--color-texto);
+}
+
+/* ==========================================================================
+   DETALLES DE PRODUCTO
+   ========================================================================== */
+
+.product-main-image-card,
+.product-info-card,
+.product-details-container {
+    background-color: var(--color-cuatro);
+    border: 1px solid var(--border-ui);
+    border-radius: 10px;
+}
+
+.thumb-container {
+    background-color: var(--color-uno);
+    border: 1px solid var(--border-ui);
+    transition: all 0.2s ease;
+}
+
+.thumb-container:hover,
+.thumb-container.active {
+    border-color: var(--color-dos);
+}
+
+.custom-tab {
+    color: var(--color-texto) !important;
+    opacity: 0.6;
+}
+
+.custom-tab.active {
+    opacity: 1;
+    color: var(--color-dos) !important;
+    background-color: var(--color-cuatro) !important;
+    border-bottom: 3px solid var(--color-dos) !important;
+}
+
+.custom-tab:hover {
+    opacity: 1;
+    color: var(--color-dos) !important;
+}
+
+/* Tabla de especificaciones */
+.custom-table {
+    color: var(--color-texto) !important;
+    border-color: var(--border-ui) !important;
+}
+
+.custom-table th {
+    background-color: rgba(var(--color-dos-rgb), 0.1);
+    color: var(--color-dos);
+    border-color: var(--border-ui) !important;
+}
+
+.custom-table td {
+    color: var(--color-texto-muted);
+    border-color: var(--border-ui) !important;
+    background-color: var(--color-cuatro) !important;
+}
+
+/* Breadcrumb */
+.breadcrumb-custom .breadcrumb-item+.breadcrumb-item::before {
+    color: var(--color-texto-muted);
+}
+
+/* ==========================================================================
+   CHECKOUT
+   ========================================================================== */
+
+.checkout-section-card {
+    background-color: var(--color-cuatro);
+    border: 1px solid var(--border-ui);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.checkout-title {
+    color: var(--color-texto);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.checkout-input {
+    background-color: var(--color-bg-input) !important;
+    border: 1px solid var(--border-ui) !important;
+    color: var(--color-texto) !important;
+}
+
+.checkout-input::placeholder {
+    color: var(--color-texto-muted);
+    opacity: 0.5;
+}
+
+.checkout-separator {
+    border-top: 1px solid var(--border-ui);
+    opacity: 1;
+    margin: 2rem 0;
+}
+
+/* Resumen lateral */
+.checkout-summary-card {
+    background-color: var(--color-cuatro) !important;
+    border: 1px solid var(--border-ui) !important;
+    overflow: hidden;
+}
+
+.summary-header {
+    background-color: var(--color-cuatro);
+    border-bottom: 1px solid var(--border-ui);
+}
+
+.total-amount {
+    color: var(--color-dos);
+    font-size: 1.75rem;
+    font-weight: 800;
+}
+
+/* Opciones de pago */
+.checkout-payment-option {
+    background-color: var(--color-uno);
+    border: 1px solid var(--border-ui);
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+
+.checkout-payment-option:hover {
+    border-color: var(--color-dos);
+}
+
+/* Enlace volver al catálogo */
+.checkout-back-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--color-dos);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    position: relative;
+    padding: 5px 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.checkout-back-link i {
+    transition: transform 0.3s ease;
+}
+
+.checkout-back-link:hover {
+    color: var(--color-seis);
+    text-decoration: none;
+}
+
+.checkout-back-link:hover i {
+    transform: translateX(-8px);
+}
+
+.checkout-back-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color-seis);
+    transition: width 0.3s ease;
+}
+
+.checkout-back-link:hover::after {
+    width: 100%;
+}
+
+/* Badge cantidad — REVISAR cuál usar: dorado (opción A) o texto (opción B) */
+/* Opción A: Fondo dorado, texto oscuro */
+.bg-adaptativo-badge {
+    background-color: var(--color-dos) !important;
+    color: var(--color-uno) !important;
+    font-weight: 800;
+    margin-left: 15px;
+}
+
+/* Opción B: Fondo texto, texto fondo */
+/* .bg-adaptativo-badge {
+    background-color: var(--color-texto);
+    color: var(--color-uno);
+} */
+
+/* ==========================================================================
+   CARRITO (OFFCANVAS)
+   ========================================================================== */
+
+.cart-custom {
+    background-color: var(--color-uno) !important;
+    color: var(--color-texto);
+}
+
+.header-cart-custom {
+    background-color: var(--color-cuatro);
+    color: var(--color-texto);
+    border-bottom: 2px solid var(--color-dos);
+}
+
+.btn-close-custom {
+    filter: var(--icon-filter, invert(1));
+}
+
+.light .btn-close-custom {
+    filter: none;
+}
+
+.item-cart-card {
+    background-color: var(--color-cuatro) !important;
+}
+
+.cart-img-container {
+    background-color: #FFFFFF;
+}
+
+.cart-img-container img {
+    max-height: 80px;
+    object-fit: contain;
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+
+.footer-custom {
+    background-color: var(--color-uno);
+    border-color: var(--border-ui) !important;
+}
+
+.footer-link {
+    color: var(--color-texto-muted);
+    transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+    color: var(--color-dos);
+}
+
+/* ==========================================================================
+   PAGINADOR
+   ========================================================================== */
+
+.pagination {
+    --bs-pagination-color: var(--color-dos);
+    --bs-pagination-bg: var(--color-cuatro);
+    --bs-pagination-border-color: var(--border-ui);
+
+    --bs-pagination-hover-color: var(--color-uno);
+    --bs-pagination-hover-bg: var(--color-cinco);
+    --bs-pagination-hover-border-color: var(--color-cinco);
+
+    --bs-pagination-active-color: var(--color-uno);
+    --bs-pagination-active-bg: var(--color-dos);
+    --bs-pagination-active-border-color: var(--color-dos);
+
+    --bs-pagination-disabled-color: var(--color-texto-muted);
+    --bs-pagination-disabled-bg: var(--color-uno);
+    --bs-pagination-disabled-border-color: var(--border-ui);
+
+    gap: 0.3rem;
+}
+
+.page-link {
+    border-radius: 6px !important;
+    padding: 0.5rem 0.85rem;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 2px 4px var(--shadow-ui);
+}
+
+.page-item.active .page-link {
+    color: var(--color-uno) !important;
+}
+
+.page-link:hover {
+    transform: translateY(-2px);
+}
+
+/* Oculta texto del paginador ("Mostrando X de Y resultados") */
+.d-flex.justify-content-center.mt-5 nav .flex-1,
+.d-flex.justify-content-center.mt-5 nav div:first-child {
+    display: none !important;
+}
+
+.d-flex.justify-content-center.mt-5 nav div:last-child {
+    display: block !important;
+}
+
+/* ==========================================================================
+   SWEETALERT
+   ========================================================================== */
+
+.swal2-popup {
+    background-color: var(--swal-bg) !important;
+    color: var(--swal-text) !important;
+}
+
+.swal2-title,
+.swal2-html-container {
+    color: var(--swal-text) !important;
+}
+
+/* ==========================================================================
+   AUTENTICACIÓN
+   ========================================================================== */
+
+.auth-card {
+    width: 90%;
+    max-width: 550px;
+    min-width: 320px;
+    margin: auto;
+    background-color: var(--color-cuatro);
+    border: 1px solid var(--border-ui);
+    border-radius: 12px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 25px var(--shadow-ui);
+    transition: all 0.3s ease;
+}
+
+.auth-container {
+    max-width: 500px;
+    width: 100%;
+}
+
+.logo-auth {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.logo-soundwave {
+    color: var(--color-seis);
+}
+
+.logo-store {
+    color: var(--color-texto);
+}
+
+/* Toggle contraseña */
+#togglePassword {
+    display: flex;
+    align-items: center;
+    padding-right: 0.75rem !important;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+#togglePassword:hover {
+    color: var(--color-dos) !important;
+}
+
+#passwordLogin.pe-5 {
+    padding-right: 3rem !important;
+}
+
+/* ==========================================================================
+   HOME
+   ========================================================================== */
+
+.light .carousel-control-prev-icon,
+.light .carousel-control-next-icon {
+    filter: invert(1) grayscale(100) brightness(0.5);
+}
+
+.light .carousel-indicators [data-bs-target] {
+    background-color: var(--color-uno);
+}
+
+/* ==========================================================================
+   EQUIPO / MARKETING
+   ========================================================================== */
+
+.team-card {
+    background-color: var(--color-cuatro) !important;
+    border: 1px solid var(--border-ui) !important;
+    transition: transform 0.3s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-5px);
+}
+
+.team-img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 3px solid var(--color-seis);
+}
+
+.color-adaptativo i {
+    transition: color 0.3s ease;
+}
+
+/* ==========================================================================
+   CONTACTO
+   ========================================================================== */
+
+.social-btn-contact {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid var(--border-ui);
+    color: var(--color-texto);
+    font-size: 1.2rem;
+    background-color: var(--color-cuatro);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.light .social-btn-contact {
+    background-color: var(--color-uno);
+    border-color: var(--color-dos);
+}
+
+.social-btn-contact:hover {
+    background-color: var(--color-dos);
+    color: var(--color-uno);
+    border-color: var(--color-dos);
+    transform: translateY(-3px);
+}
+
+.social-icon-hover:hover {
+    color: var(--color-dos) !important;
+    transform: scale(1.2);
+    transition: 0.2s;
+}
+
+.map-container {
+    min-height: 250px;
+    border: 1px solid var(--border-ui);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.list-custom li {
+    margin-bottom: 0.5rem;
+}
+
+.list-custom li::marker {
+    color: var(--color-dos);
+}
+
+/* ==========================================================================
+   TÉRMINOS Y CONDICIONES
+   ========================================================================== */
+
+.terms-content h3 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+}
+
+.terms-content p {
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+}
+
+/* ==========================================================================
+   PERFIL DEL USUARIO
+   ========================================================================== */
+
+
+.perfil-header {
+    padding: 1.25rem 1.5rem;
+    background-color: var(--color-cuatro);
+    border: 1px solid var(--border-ui);
+    border-radius: 12px;
+}
+
+.perfil-avatar {
+    width: 56px;
+    height: 56px;
+    min-width: 56px;
+    border-radius: 50%;
+    background-color: rgba(212, 160, 23, 0.15);
+    border: 2px solid var(--color-dos);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-dos);
+    letter-spacing: 1px;
+}
+
+.perfil-nombre {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-texto);
+}
+
+.perfil-email {
+    font-size: 0.85rem;
+    color: var(--color-texto-muted);
+}
+
+.perfil-campo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.perfil-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-texto-muted);
+    font-weight: 500;
+}
+
+.perfil-valor {
+    font-size: 0.95rem;
+    color: var(--color-texto);
+    font-weight: 500;
+}
+
+.btn-editar {
+    background: transparent;
+    border: 1px solid var(--color-dos);
+    color: var(--color-dos);
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-editar:hover {
+    background-color: var(--color-dos);
+    color: var(--color-uno);
+}
+
+.btn-cancelar {
+    background: transparent;
+    border: 1px solid var(--border-ui);
+    color: var(--color-texto-muted);
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-cancelar:hover {
+    border-color: var(--color-seis);
+    color: var(--color-seis);
+}
+
+/* ==========================================================================
+   UTILIDADES Y CLASES ADAPTATIVAS
+   ========================================================================== */
+
+.color-adaptativo {
+    color: var(--color-texto);
+}
+
+.text-muted-adaptativo {
+    color: var(--color-texto-muted);
+}
+
+.color-dorado-adaptativo {
+    color: var(--color-dos);
+}
+
+.bg-superficie-adaptativa {
+    background-color: var(--color-cuatro) !important;
+}
+
+.border-ui-adaptativa {
+    border-color: var(--border-ui) !important;
+    opacity: 1;
+}
+
+.border-muted-custom {
+    border-color: var(--border-ui) !important;
+}
+
+.text-muted-custom {
+    color: var(--color-texto-muted);
+}
+
+.pages-decoration {
+    border: 1px solid var(--border-ui);
+    border-radius: 12px;
+    background-color: var(--color-uno);
+    transition: all 0.3s ease;
+}
+
+.light .pages-decoration {
+    background-color: var(--color-uno);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Este código SOLO se ejecutará en pantallas de 992px o más (Bootstrap LG) - Manejo del menú de Catálogo */
+@media (min-width: 992px) {
+    .nav-item.dropdown .dropdown-menu {
+        left: 50% !important;
+        right: auto !important;
+        transform: translateX(-50%) !important;
+    }
+}
+
+
+
+/* Decoración a métodos de pago */
+/* Hace que el cursor sea interactivo en toda la tarjeta */
+.cursor-pointer {
+    cursor: pointer;
+}
+
+/* Efecto hover suave para la zona de pago */
+.checkout-payment-option {
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.checkout-payment-option:hover {
+    background-color: rgba(0, 0, 0, 0.02); /* Ajustar según tema claro/oscuro */
+}
+
+/* Opcional: Resaltar visualmente la tarjeta si el radio está seleccionado */
+.checkout-payment-option:has(input:checked) {
+    border-color: var(--color-dos) !important;
+    background-color: rgba(13, 110, 253, 0.05);
+}

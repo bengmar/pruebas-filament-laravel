@@ -1,0 +1,9 @@
+# Ignora todo el contenido de la raíz
+/*
+
+# Exceptúa el archivo .gitignore
+!.gitignore
+
+# Exceptúa la carpeta de productos y todo su contenido
+!products/
+!products/**
