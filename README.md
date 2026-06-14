@@ -120,7 +120,7 @@ Desarrollado con vistas **Blade** tradicionales y controladores optimizados para
 ```bash
      php artisan migrate --seed
 ```
-o para refrescar
+  o para refrescar
 ```bash
      php artisan migrate:fresh --seed
 ```
