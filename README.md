@@ -2,7 +2,7 @@
 
 Catálogo web de instrumentos y otros productos musicales construido con Laravel y Filament.
 
-La plataforma cuenta con un frontend público donde los usuarios pueden visualizar los detalles de la empresa, el modelo de negocio, información de contacto, explorar productos disponibles y gestionar por completo sus perfiles (carritos de compra y edición de datos). Además, incluye un panel de administración para delegar todas las gestiones operativas del sitio.
+En la plataforma los usuarios pueden visualizar los detalles de la empresa, el modelo de negocio, información de contacto, explorar productos disponibles y gestionar por completo sus perfiles (carritos de compra y edición de los datos de su cuenta). Además, incluye un panel de administración para manejar todas las gestiones operativas del sitio.
 
 ---
 
@@ -93,7 +93,7 @@ Desarrollado con vistas **Blade** tradicionales y controladores optimizados para
    cd Proyecto-bengochea-aguilar
    ```
 
-2. Configurar variables de entorno en `.env` (Copias el `.env.example` y agregas tus datos).
+2. Configurar variables de entorno en `.env`. Copiar el `.env.example`,renombrar la copia a `.env` y rellenar con los siguientes datos los campos que correspondan:
    ### Ajustes básicos .env
    * DB_CONNECTION=mariadb
    * DB_HOST=127.0.0.1
@@ -105,7 +105,7 @@ Desarrollado con vistas **Blade** tradicionales y controladores optimizados para
    * APP_LOCALE=es
    * APP_FALLBACK_LOCALE=es
    * APP_FAKER_LOCALE=es_AR
-
+     * ** Nota: ** Es importante el puerto :8000 en APP_URL para el correcto reconocimiento de las imágenes en filament
 3. Instalar Dependencias y generar clave
     ```bash
     composer install
@@ -118,10 +118,15 @@ Desarrollado con vistas **Blade** tradicionales y controladores optimizados para
     ```
 5. Ejecutar la migración (NOTA: Tener activo el servidor de bbdd)
 ```bash
-    php artisan migrate:fresh --seed 
+     php artisan migrate --seed
+```
+o para refrescar
+```bash
+     php artisan migrate:fresh --seed
 ```
 
 6. Iniciar servidor 
 ```bash
     php artisan serve
 ```
+7. Usuario admin: admin@soundwave.com, pass: admin123
